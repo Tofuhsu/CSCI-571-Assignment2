@@ -1,0 +1,149 @@
+AI-Assisted Development Log
+CSCI 571 - Assignment 2: Movie Explorer
+Student: Hsuan-Fu Hsu
+USC Email: hsuanfu0709@gmail.com
+
+================================================================================
+1. Project Setup
+================================================================================
+
+Created a new project folder for Assignment 2 and set up the required structure:
+- app.py
+- requirements.txt
+- Dockerfile
+- templates/index.html
+- static/css/styles.css
+- static/js/app.js
+
+Initialized a new GitHub repository and pushed the initial structure.
+
+================================================================================
+2. Flask Backend Development
+================================================================================
+
+Implemented a Flask application to serve the frontend and provide API endpoints.
+
+Added:
+- "/" route → renders index.html
+- "/api/search" → searches movies using TMDB API
+- "/api/movie/<id>" → returns detailed movie information
+
+Used the requests library to call TMDB APIs.
+
+================================================================================
+3. API Key Management
+================================================================================
+
+Stored TMDB API key using environment variables instead of hardcoding.
+
+Used:
+export TMDB_API_KEY=...
+
+Accessed in Flask using:
+os.environ.get("TMDB_API_KEY")
+
+Ensured the key is not included in GitHub repository.
+
+================================================================================
+4. Frontend Implementation
+================================================================================
+
+Built the UI using pure HTML, CSS, and JavaScript (no frameworks).
+
+Features:
+- Search input and button
+- Results grid with movie cards
+- Detail view with:
+  - backdrop image
+  - poster
+  - title and tagline
+  - genres, runtime, rating
+  - cast list
+  - embedded YouTube trailer
+
+================================================================================
+5. UI Enhancement
+================================================================================
+
+Updated UI to closely match the provided demo:
+
+- Dark gradient background
+- Pink title styling
+- Rounded search bar
+- Card-based layout
+- Detail page layout with two columns
+- Chip-style tags for cast and genres
+- Embedded YouTube player
+
+================================================================================
+6. Interaction Logic
+================================================================================
+
+Implemented:
+
+- Search functionality using fetch("/api/search")
+- Click "View" → fetch("/api/movie/<id>")
+- Back button to return to results
+- Search inside detail view resets UI
+
+Handled edge cases:
+- Empty input → error message
+- No results → "No movies found"
+- Network errors handled with try/catch
+
+================================================================================
+7. Debugging
+================================================================================
+
+Resolved issues including:
+
+- Flask syntax errors
+- Port 5000 conflict (macOS Control Center)
+- VS Code import warnings
+- TMDB API key not set
+- UI layout mismatches
+- Detail view not hiding correctly
+
+================================================================================
+8. Docker and Deployment
+================================================================================
+
+Created Dockerfile using python:3.11-slim and Gunicorn.
+
+Built container using:
+gcloud builds submit
+
+Deployed to Cloud Run using:
+gcloud run deploy
+
+Passed environment variable:
+--set-env-vars TMDB_API_KEY=...
+
+================================================================================
+9. Final Deployment
+================================================================================
+
+Cloud Run URL:
+https://movie-explorer-394763791461.us-central1.run.app/
+
+Verified:
+- search works
+- detail view works
+- trailer plays
+- no results case works
+- UI matches expected design
+
+================================================================================
+10. Reflection
+================================================================================
+
+This project reinforced skills in:
+- Flask backend development
+- REST API integration
+- environment variable security
+- frontend/backend separation
+- Docker containerization
+- Cloud Run deployment
+
+AI tools were used for guidance, debugging, and optimization, but all code was
+reviewed and tested manually before submission.

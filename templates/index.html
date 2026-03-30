@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Movie Explorer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="logo">🎬 <span class="logo-text">Movie Explorer</span></div>
+        <div class="subtitle">Discover movies and watch trailers</div>
+
+        <div class="search-block">
+          <input
+            id="q"
+            class="search-input"
+            type="search"
+            placeholder="Search for a movie (e.g., Avatar, Inception, Avengers)"
+            aria-label="Search movies"
+          />
+          <button id="searchBtn" class="btn primary">Search</button>
+        </div>
+
+        <p id="status" class="status-text">Please enter a search term</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="results" class="results-grid" aria-live="polite"></section>
+
+      <section id="detail-section" class="detail-section hidden" aria-live="polite">
+        <button id="backBtn" class="btn outline back-btn">← Back to Results</button>
+
+        <div id="detailBackdropWrap" class="detail-backdrop-wrap hidden">
+          <img id="detailBackdrop" src="" alt="">
+        </div>
+
+        <div class="detail-grid">
+          <div class="detail-image">
+            <img id="detailImage" src="" alt="">
+          </div>
+
+          <div class="detail-content">
+            <h1 id="detailTitle"></h1>
+            <p id="detailTagline" class="tagline"></p>
+
+            <div id="detailBadges" class="badges"></div>
+
+            <h2 class="section-title">Overview</h2>
+            <div id="overviewText" class="overview-text"></div>
+
+            <h2 class="section-title">Top Cast</h2>
+            <div id="castList" class="chip-list"></div>
+
+            <h2 class="section-title">Trailer</h2>
+            <div id="trailerContainer" class="trailer-container"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <small>Made for CSCI571 • Deployed on Cloud Run</small>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
